@@ -506,11 +506,8 @@ $(eval $(call KernelPackage,drm-i915))
 define KernelPackage/drm-ivpu
   SUBMENU:=$(VIDEO_MENU)
   TITLE:=Intel VPU DRM support
-  DEPENDS:=@TARGET_x86 +ivpu-firmware
-  KCONFIG:=CONFIG_DRM_ACCEL_IVPU \
-       CONFIG_DRM_ACCEL_HABANALABS=n \
-       CONFIG_DRM_ACCEL_QAIC=n \
-       CONFIG_DRM_ACCEL=y
+  DEPENDS:=@TARGET_x86_64 +ivpu-firmware
+  KCONFIG:=CONFIG_DRM_ACCEL_IVPU
   FILES:=$(LINUX_DIR)/drivers/accel/ivpu/intel_vpu.ko
   AUTOLOAD:=$(call AutoProbe,intel_vpu)
 endef
